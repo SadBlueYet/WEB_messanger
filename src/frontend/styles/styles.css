@@ -1,0 +1,121 @@
+/* Основные стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #222222; /* Серый фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Контейнер авторизации */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Заголовки */
+.login-header {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #d3d3d3;
+}
+
+.login-subheader {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Формы */
+.login-form {
+    margin-top: 20%;
+    display: flex;
+    color: rgb(135, 116, 225);
+    flex-direction: column;
+    gap: 16px;
+}
+
+label {
+    font-size: 14px;
+    text-align: left;
+}
+
+input {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #222222;
+    border-radius: 5px;
+    background-color: #222222; /* Фон совпадает с фоном кнопки */
+    color: rgb(135, 116, 225);
+    border-color: #666;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* При наведении на инпут */
+input:hover {
+    border-color: rgb(135, 116, 225); /* Фиолетовая граница при наведении */
+}
+
+input:focus {
+    background-color: #333333;
+    border-color: rgb(135, 116, 225);
+    color: rgb(135, 116, 225);
+    outline: none;
+}
+
+/* Кнопка входа */
+.btn-login {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #222222; /* Фон совпадает с фоном страницы */
+    color: rgb(135, 116, 225);
+    border: 1px solid #222222;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10%;
+    transition: opacity 0.3s, background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn-login:hover {
+    opacity: 0.7; /* Устанавливает прозрачность */
+    background-color: #222222; /* Оставляет фон темным */
+    color: rgb(135, 116, 225); /* Цвет текста остается неизменным */
+    border-color: rgb(135, 116, 225); /* Цвет границы изменяется */
+}
+
+/* Ссылки */
+.login-footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.login-footer a {
+    color: rgb(135, 116, 225);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.login-footer a:hover {
+    color: rgb(100, 85, 170); /* Плавный переход цвета при наведении */
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 10px;
+    }
+
+    .login-header {
+        font-size: 20px;
+    }
+}
