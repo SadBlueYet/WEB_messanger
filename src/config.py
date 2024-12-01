@@ -41,6 +41,27 @@ class Secret(BaseSettings):
     SECRET: str = "SECRET"
 
 
+class ApiV1Prefix(BaseSettings):
+    prefix: str = "/v1"
+    auth: str = "/auth"
+    users: str = "/users"
+    messages: str = "/messages"
+
+
+class ApiPrefix(BaseSettings):
+    prefix: str = "/api"
+    v1: ApiV1Prefix = ApiV1Prefix()
+
+    @property
+    def bearer_token_url(self) -> str:
+        # api/v1/auth/login
+        parts = (self.prefix, self.v1.prefix, self.v1.auth, "/login")
+        path = "".join(parts)
+        # return path[1:]
+        return path.removeprefix("/")
+
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(case_sensitive=True)
 
@@ -48,6 +69,7 @@ class Settings(BaseSettings):
     DATABASES: ClassVar[DB] = DB()
     ACCEES_TOKEN: ClassVar[AccessToken] = AccessToken()
     SECRET: ClassVar[Secret] = Secret()
+    API: ClassVar[ApiPrefix] = ApiPrefix()
 
 
 settings = Settings()
