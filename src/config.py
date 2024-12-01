@@ -41,8 +41,11 @@ class Settings(BaseSettings):
     LOGGING: ClassVar[Logging] = Logging()
     DATABASES: ClassVar[DB] = DB()
 
+    LIFETIME_TOKEN_SECONDS: int = 3600
+
     engine: AsyncEngine = create_async_engine(DATABASES.POSTGRES_DSN)
     async_session_maker: async_sessionmaker = async_sessionmaker(engine, expire_on_commit=False)
+
 
     async def get_async_session(self) -> AsyncGenerator[AsyncSession, None]:
         async with self.async_session_maker() as session:
