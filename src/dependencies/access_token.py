@@ -5,17 +5,18 @@ from typing import (
 
 from fastapi import Depends
 
-from models import User
 from db import db_helper
+from models import AccessToken
+
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
 
-async def get_users_db(
+async def get_access_token_db(
     session: Annotated[
         "AsyncSession",
         Depends(db_helper.get_async_session),
     ],
 ):
-    yield User.get_db(session=session)
+    yield AccessToken.get_db(sescresion=session)
