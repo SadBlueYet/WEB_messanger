@@ -25,16 +25,20 @@ class DB(BaseSettings):
         )
 
 
-    class Logging:
-        LOG_LEVEL: str = "INFO"
-        LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+class Logging:
+    LOG_LEVEL: str = "INFO"
+    LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
-        def setup_logging(self):
-            logging.basicConfig(level=self.Logging.LOG_LEVEL, format=self.Logging.LOG_FORMAT)
+    def setup_logging(self):
+        logging.basicConfig(level=self.LOG_LEVEL, format=self.LOG_FORMAT)
 
 
 class AccessToken(BaseSettings):
     LIFETIME_SECONDS: int = 3600
+
+
+class Secret(BaseSettings):
+    SECRET: str = "SECRET"
 
 
 class Settings(BaseSettings):
@@ -43,6 +47,7 @@ class Settings(BaseSettings):
     LOGGING: ClassVar[Logging] = Logging()
     DATABASES: ClassVar[DB] = DB()
     ACCEES_TOKEN: ClassVar[AccessToken] = AccessToken()
+    SECRET: ClassVar[Secret] = Secret()
 
 
 settings = Settings()
