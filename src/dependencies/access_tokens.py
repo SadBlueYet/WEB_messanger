@@ -5,8 +5,8 @@ from typing import (
 
 from fastapi import Depends
 
+from db import db_helper
 from models import AccessToken
-from config import settings
 
 
 if TYPE_CHECKING:
@@ -16,7 +16,7 @@ if TYPE_CHECKING:
 async def get_access_tokens_db(
     session: Annotated[
         "AsyncSession",
-        Depends(settings.DATABASES.get_async_session),
+        Depends(db_helper.get_async_session),
     ],
 ):
     yield AccessToken.get_db(sescresion=session)

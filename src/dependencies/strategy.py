@@ -24,5 +24,5 @@ def get_database_strategy(
 ) -> DatabaseStrategy:
     return DatabaseStrategy(
         database=access_tokens_db,
-        lifetime_seconds=settings.LIFETIME_TOKEN_SECONDS,
+        lifetime_seconds=settings.ACCEES_TOKEN.LIFETIME_SECONDS,
     )

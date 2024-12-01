@@ -6,7 +6,7 @@ from typing import (
 from fastapi import Depends
 
 from models import User
-from config import settings
+from db import db_helper
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 async def get_users_db(
     session: Annotated[
         "AsyncSession",
-        Depends(settings.DATABASES.get_async_session),
+        Depends(db_helper.get_async_session),
     ],
 ):
     yield User.get_db(session=session)
