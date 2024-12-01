@@ -27,6 +27,10 @@ class Settings(BaseSettings):
                 f"@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
             )
 
+        async def get_async_session(self) -> AsyncGenerator[AsyncSession, None]:
+            async with self.async_session_maker() as session:
+                yield session
+
 
 
     class Logging:
@@ -46,10 +50,6 @@ class Settings(BaseSettings):
     engine: AsyncEngine = create_async_engine(DATABASES.POSTGRES_DSN)
     async_session_maker: async_sessionmaker = async_sessionmaker(engine, expire_on_commit=False)
 
-
-    async def get_async_session(self) -> AsyncGenerator[AsyncSession, None]:
-        async with self.async_session_maker() as session:
-            yield session
 
 settings = Settings()
 settings.setup_logging()
