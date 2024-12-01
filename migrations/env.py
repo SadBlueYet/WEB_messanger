@@ -13,8 +13,12 @@ config = context.config
 section = config.config_ini_section
 config.set_section_option(section, "POSTGRES_HOST", settings.DATABASES.POSTGRES_HOST)
 config.set_section_option(section, "POSTGRES_DB", settings.DATABASES.POSTGRES_DB)
-config.set_section_option(section, "POSTGRES_PASSWORD", settings.DATABASES.POSTGRES_PASSWORD)
-config.set_section_option(section, "POSTGRES_PORT", str(settings.DATABASES.POSTGRES_PORT))
+config.set_section_option(
+    section, "POSTGRES_PASSWORD", settings.DATABASES.POSTGRES_PASSWORD
+)
+config.set_section_option(
+    section, "POSTGRES_PORT", str(settings.DATABASES.POSTGRES_PORT)
+)
 config.set_section_option(section, "POSTGRES_USER", settings.DATABASES.POSTGRES_USER)
 
 

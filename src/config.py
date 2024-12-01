@@ -6,8 +6,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from collections.abc import AsyncGenerator
 
 
-
 load_dotenv(find_dotenv(".env"))
+
 
 class DB(BaseSettings):
     POSTGRES_HOST: str = "localhost"
@@ -38,7 +38,8 @@ class AccessToken(BaseSettings):
 
 
 class Secret(BaseSettings):
-    SECRET: str = "SECRET"
+    RESET_PASSWORD_TOKEN_SECRET: str = "SECRET"
+    VERIFICATION_TOKEN_SECRET: str = "SECRET"
 
 
 class ApiV1Prefix(BaseSettings):
@@ -59,7 +60,6 @@ class ApiPrefix(BaseSettings):
         path = "".join(parts)
         # return path[1:]
         return path.removeprefix("/")
-
 
 
 class Settings(BaseSettings):
