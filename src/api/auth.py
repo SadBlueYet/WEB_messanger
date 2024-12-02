@@ -1,4 +1,7 @@
+from http.client import HTTPException
+
 from fastapi import APIRouter
+from sqlalchemy.exc import IntegrityError
 
 from .fastapi_users_router import fastapi_users
 from authentication.backend import authentication_backend
