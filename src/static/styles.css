@@ -93,7 +93,7 @@ input:focus {
 
 /* Ссылки */
 .login-footer {
-    margin-top: 20px;
+    margin-top: 10%;
     font-size: 14px;
     color: #666;
 }
@@ -119,3 +119,74 @@ input:focus {
         font-size: 20px;
     }
 }
+.container {
+  display: block;
+  position: relative;
+  padding-left: 25px; /* уменьшено отступ слева */
+  margin-bottom: 10px; /* уменьшено расстояние снизу */
+  cursor: pointer;
+  font-size: 16px; /* уменьшен размер шрифта */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Скрыть стандартный чекбокс */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Создание пользовательского чекбокса */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px; /* уменьшена высота */
+  width: 16px;  /* уменьшена ширина */
+  background-color: #222222;
+  border: 1px solid #666;
+  border-radius: 4px;
+  transition: opacity 0.3s, background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+/* При наведении меняем фон на серый */
+.container:hover input ~ .checkmark {
+  border-color: rgb(135, 116, 225);
+}
+
+/* При отмеченном чекбоксе — синий фон */
+.container input:checked ~ .checkmark {
+  background-color: rgb(135, 116, 225);
+}
+
+/* Создание галочки (иконки) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Показываем галочку при выбранном чекбоксе */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Стиль для галочки */
+.container .checkmark:after {
+  left: 5px;  /* смещено влево */
+  top: 3px;   /* смещено вверх */
+  width: 3px; /* уменьшена ширина */
+  height: 6px; /* уменьшена высота */
+  border: solid white;
+  border-width: 0 2px 2px 0; /* уменьшена толщина */
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
