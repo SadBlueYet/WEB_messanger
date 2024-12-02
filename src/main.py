@@ -11,4 +11,3 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 for router in all_routers:
     app.include_router(router)
-print(settings.DATABASES.ASYNC_POSTGRES_DSN)
